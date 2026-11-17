@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Septian Ghozi Mustofa | Programmer & Software Engineering</title>
+  <meta name="description" content="Website portofolio modern Septian Ghozi Mustofa, mahasiswa Teknologi Rekayasa Perangkat Lunak (Programmer) di Politeknik IDN dengan visual cyber glassmorphism dan antarmuka interaktif." />
+  <meta name="theme-color" content="#030014" />
+
+  <!-- Google Fonts: Poppins & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=23" />
+
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Reusable SVG Gradients Definition -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6366f1" />
+        <stop offset="100%" stop-color="#a855f7" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ==============================================
+       1. WELCOME SCREEN / PRELOADER INTRO
+       ============================================== -->
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <!-- Floating Icons -->
+      <div class="welcome-icons">
+        <div class="welcome-icon-box" title="Code">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <div class="welcome-icon-box" title="Developer">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="welcome-icon-box" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Welcome Headings -->
+      <h1 class="welcome-title">
+        <span class="white-text">Welcome To My</span><br />
+        <span class="gradient-text">Portofolio Website</span>
+      </h1>
+
+      <!-- Website Badge with Live Typewriter -->
+      <div class="welcome-link-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span id="welcome-typewriter-text"></span>
+        <span class="blinking-cursor"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Starfield Canvas -->
+  <canvas id="background-canvas"></canvas>
+
+  <!-- Ambient Glowing Blobs -->
+  <div class="ambient-blobs-container">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+    <div class="ambient-blob blob-3"></div>
+  </div>
+
+  <!-- ==============================================
+       MAIN APP CONTAINER
+       ============================================== -->
+  <div class="app-container">
+
+    <!-- FLOATING NAVBAR -->
+    <header class="navbar-container">
+      <nav class="navbar" id="main-nav" aria-label="Main Navigation">
+        <a href="#Home" class="nav-brand">
+          <div class="brand-logo-glow">S</div>
+          <span class="brand-name">Septian Ghozi</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#Home" class="nav-link active">Home</a></li>
+          <li><a href="#About" class="nav-link">About</a></li>
+          <li><a href="#Portofolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#Contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <a href="#Contact" class="nav-cta-btn">Let's Talk</a>
+
+        <!-- Mobile Drawer Toggle (Hamburger) -->
+        <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-icon" aria-hidden="true">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+            <span class="hamburger-bar bar-3"></span>
+          </span>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Drawer / Dropdown -->
+      <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+        <ul class="mobile-nav-links">
+          <li>
+            <a href="#Home" class="mobile-nav-link active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#About" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#Portofolio" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <span>Portfolio</span>
+            </a>
+          </li>
+          <li>
+            <a href="#Contact" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mobile-nav-footer">
+          <a href="#Contact" class="mobile-nav-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+            </svg>
+            <span>Let's Talk</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+
+    <!-- ==============================================
+         PAGE 1: HERO SECTION (HOME)
+         ============================================== -->
+    <main>
+      <section class="hero-section" id="Home">
+        <div class="hero-grid">
+
+          <!-- Left Column: Bio & Calls To Action -->
+          <div class="hero-left">
+
+            <!-- Status Pill Badge -->
+            <div class="status-badge">
+              <span class="pulse-dot"></span>
+              <span class="status-badge-text">Ready to Innovate</span>
+            </div>
+
+            <!-- Main Title with Cyber Glow -->
+            <h1 class="hero-title">
+              <span class="text-light">Full-Stack</span>
+              <span class="text-gradient">Developer</span>
+            </h1>
+
+            <!-- Animated Typing Subtitle -->
+            <div class="hero-typewriter-container">
+              <span id="hero-typewriter-text" class="typewriter-text"></span>
+              <span class="typing-cursor"></span>
+            </div>
+
+            <!-- Brief Tagline -->
+            <p class="hero-description">
+              Mahasiswa Teknologi Rekayasa Perangkat Lunak (Programmer) di Politeknik IDN yang berfokus pada rekayasa web modern, antarmuka interaktif, dan solusi digital kreatif.
+            </p>
+
+            <!-- Tech Stack Badges -->
+            <div class="hero-tech-stack">
+              <span class="tech-badge">⚡ Laravel</span>
+              <span class="tech-badge">🌐 Livewire</span>
+              <span class="tech-badge">🎨 Tailwind CSS</span>
+              <span class="tech-badge">🚀 JavaScript</span>
+              <span class="tech-badge">✨ PHP</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hero-actions">
+              <a href="#Portofolio" class="btn-primary">
+                <span>Explore Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+
+              <a href="#Contact" class="btn-secondary">
+                <span>Contact Me</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="hero-socials">
+              <a href="https://github.com/ghozi30" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+
+              <a href="https://www.linkedin.com/in/septian-ghozi/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+
+              <a href="https://www.instagram.com/ghoziseptian/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Cyber Core Animation -->
+          <div class="hero-right">
+            <div class="hero-3d-wrapper" id="hero-3d-container">
+              <!-- Glow Ambient Backdrop -->
+              <div class="hero-3d-backdrop-glow"></div>
+
+              <!-- Canvas Animation Element -->
+              <canvas id="hero-three-canvas"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE 2: ABOUT ME SECTION (Matches Screenshot Exactly)
+           ============================================== -->
+      <section class="about-section" id="About">
+
+        <!-- Section Header (Centered with <> Subtitle) -->
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <div class="section-subtitle">
+            <span class="subtitle-symbol">&lt;&gt;</span>
+            <span>Transforming ideas into digital experiences</span>
+            <span class="subtitle-symbol">&lt;&gt;</span>
+          </div>
+        </div>
+
+        <!-- About 2-Column Grid -->
+        <div class="about-grid">
+
+          <!-- Left Column: Greeting, Name, Bio & Buttons -->
+          <div class="about-text-col">
+            <span class="about-intro-greeting">Hello, I'm</span>
+            <h3 class="about-name">Septian Ghozi Mustofa</h3>
+
+            <p class="about-bio">
+              Mahasiswa <strong>Teknologi Rekayasa Perangkat Lunak (Programmer)</strong> di <strong>Politeknik IDN</strong> yang berfokus pada rekayasa antarmuka web modern, interaktif, dan performan tinggi dengan logika kode yang bersih dan selalu berusaha memberikan solusi terbaik dalam setiap proyek.
+            </p>
+
+            <!-- Action CTA Buttons -->
+            <div class="about-actions">
+              <a href="https://docs.google.com/document/d/1NnqEWoPeZp_HGcEnFQgxUgRMx9C7O1H-/edit?usp=sharing&ouid=104387755133190283197&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="btn-primary" title="Lihat Dokumen CV">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Lihat CV</span>
+              </a>
+
+              <a href="#Portofolio" class="btn-secondary">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>View Projects</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Profile Photo with Radiant Violet Aura -->
+          <div class="about-photo-col">
+            <div class="profile-photo-wrapper">
+              <!-- Radiant Ambient Glow -->
+              <div class="photo-aura-glow"></div>
+              <!-- Clean Circular Portrait -->
+              <img src="assets/profile.jpg?v=2" alt="Septian Ghozi Mustofa" class="profile-img" loading="lazy" />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Stat Cards Grid (3 Highlight Stats Matching Screenshot) -->
+        <div class="stats-grid">
+
+          <!-- Card 1: Total Projects -->
+          <div class="stat-card" id="stat-card-projects" role="button" tabindex="0" title="Buka Tab Proyek">
+            <div class="stat-card-top">
+              <div class="stat-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <span class="stat-number">6</span>
+            </div>
+            <div class="stat-card-bottom">
+              <span class="stat-label">TOTAL PROJECTS</span>
+              <span class="stat-desc">Innovative web solutions crafted</span>
+            </div>
+            <div class="stat-card-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 2: Certificates -->
+          <div class="stat-card" id="stat-card-certs" role="button" tabindex="0" title="Buka Tab Sertifikat">
+            <div class="stat-card-top">
+              <div class="stat-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="6"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+              </div>
+              <span class="stat-number">4</span>
+            </div>
+            <div class="stat-card-bottom">
+              <span class="stat-label">CERTIFICATES</span>
+              <span class="stat-desc">Professional skills validated</span>
+            </div>
+            <div class="stat-card-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 3: Years of Experience -->
+          <div class="stat-card">
+            <div class="stat-card-top">
+              <div class="stat-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              <span class="stat-number">1+</span>
+            </div>
+            <div class="stat-card-bottom">
+              <span class="stat-label">YEARS OF EXPERIENCE</span>
+              <span class="stat-desc">Continuous learning journey</span>
+            </div>
+            <div class="stat-card-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==============================================
+           PAGE 3: PORTFOLIO SHOWCASE SECTION
+           ============================================== -->
+      <section class="portfolio-section" id="Portofolio">
+
+        <!-- Section Header -->
+        <div class="section-header portfolio-header">
+          <div class="section-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>PORTFOLIO SHOWCASE</span>
+          </div>
+          <h2 class="section-title">Karya Pilihan &amp; Inovasi Digital</h2>
+          <p class="section-subtitle-clean">
+            Eksplorasi proyek rekayasa perangkat lunak, sistem antarmuka interaktif, dan arsitektur web modern.
+          </p>
+        </div>
+
+        <!-- Filter Tab Buttons (Capsule Segmented Bar) -->
+        <div class="portfolio-tabs-container">
+          <div class="portfolio-tabs-pills" role="tablist">
+            <button class="portfolio-tab-btn active" data-tab="projects" role="tab" aria-selected="true" aria-label="Projects Tab">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>Projects</span>
+              <span class="tab-badge" id="badge-projects">6</span>
+            </button>
+
+            <button class="portfolio-tab-btn" data-tab="certificates" role="tab" aria-selected="false" aria-label="Certificates Tab">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+              <span>Certificates</span>
+              <span class="tab-badge" id="badge-certs">4</span>
+            </button>
+
+            <button class="portfolio-tab-btn" data-tab="techstack" role="tab" aria-selected="false" aria-label="Tech Stack Tab">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Tech Stack</span>
+              <span class="tab-badge" id="badge-tech">9</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             TAB PANEL 1: PROJECTS SHOWCASE
+             ============================================== -->
+        <div class="portfolio-tab-panel active" id="tab-projects">
+
+          <!-- Carousel Controls Header -->
+          <div class="projects-carousel-bar">
+            <div class="projects-carousel-info">
+              <span class="projects-carousel-badge">
+                <span class="carousel-pulse-dot"></span>
+                <span id="projects-carousel-counter">Menampilkan 1 - 3 dari 6 Proyek</span>
+              </span>
+              <span class="projects-carousel-swipe-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8L22 12L18 16"></path>
+                  <path d="M6 8L2 12L6 16"></path>
+                  <path d="M2 12H22"></path>
+                </svg>
+                Geser untuk melihat lainnya
+              </span>
+            </div>
+
+            <div class="projects-carousel-nav">
+              <button type="button" class="carousel-nav-btn prev-btn" id="proj-prev-btn" aria-label="Proyek Sebelumnya" title="Sebelumnya">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button type="button" class="carousel-nav-btn next-btn" id="proj-next-btn" aria-label="Proyek Selanjutnya" title="Selanjutnya">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="projects-carousel-wrapper">
+            <div class="projects-grid" id="projects-grid">
+
+            <!-- Project 1: FinTrack Financial Suite -->
+            <div class="project-card" data-category="fullstack" data-project-id="1">
+              <div class="project-img-box">
+                <img src="assets/project1.jpg?v=2" alt="FinTrack" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Financial Suite</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">HTML</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                  <span class="p-tech-tag">JavaScript</span>
+                </div>
+                <h3 class="project-title">FinTrack</h3>
+                <p class="project-desc">
+                  website manajemen keuangan yang bisa membantu user nya mengatur keuangan mereka dengan sebaik-baiknya
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="1" title="Lihat detail dan preview FinTrack">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/tugas-pa-dedi.git" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2: First Web -->
+            <div class="project-card" data-category="frontend" data-project-id="2">
+              <div class="project-img-box">
+                <img src="assets/project2.jpg?v=2" alt="First Web" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Web Course Platform</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">HTML</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                </div>
+                <h3 class="project-title">First Web</h3>
+                <p class="project-desc">
+                  ini adalah website pertama saya yang saya bikin di jurusan TRPL berupa website yang menawarkan cursus yang mengajarkan materi programmer .
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="2" title="Lihat detail dan preview First Web">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/projek-jumat.git" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3: E-Report -->
+            <div class="project-card" data-category="fullstack" data-project-id="3">
+              <div class="project-img-box">
+                <img src="assets/project3.jpg?v=2" alt="E-Report" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Aspirasi &amp; Pengaduan Warga</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">Laravel</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                  <span class="p-tech-tag">PHP</span>
+                  <span class="p-tech-tag">Livewire</span>
+                </div>
+                <h3 class="project-title">E-Report</h3>
+                <p class="project-desc">
+                  website yang membantu melaporkan masalah apa saja yang terjadi di suatu desa atau lingkungan sekitar
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="3" title="Lihat detail dan preview E-Report">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/tugas-pa-dedi.git" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4: ToDoList -->
+            <div class="project-card" data-category="webapp" data-project-id="4">
+              <div class="project-img-box">
+                <img src="assets/project4.jpg?v=2" alt="ToDoList" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Productivity &amp; Agenda Manager</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">Laravel</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                  <span class="p-tech-tag">PHP</span>
+                  <span class="p-tech-tag">Livewire</span>
+                  <span class="p-tech-tag">JavaScript</span>
+                </div>
+                <h3 class="project-title">ToDoList</h3>
+                <p class="project-desc">
+                  website ini membantu merencanakan kegiatan apa saja yang ingin dilakukan kedepannya agar tidak lupa
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="4" title="Lihat detail dan preview ToDoList">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/To-do-List" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5: Fruitopia -->
+            <div class="project-card" data-category="webapp" data-project-id="5">
+              <div class="project-img-box">
+                <img src="assets/project5.jpg?v=2" alt="Fruitopia" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Fresh Grocery &amp; AI Assistant</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">Laravel</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                  <span class="p-tech-tag">PHP</span>
+                  <span class="p-tech-tag">Livewire</span>
+                  <span class="p-tech-tag">MySQL</span>
+                </div>
+                <h3 class="project-title">Fruitopia</h3>
+                <p class="project-desc">
+                  Fruitopia adalah platform e-commerce dan katalog belanja daring khusus buah segar lokal maupun impor yang menyediakan pembaruan stok secara real-time, jaminan kualitas panen harian, serta asisten belanja berbasis kecerdasan buatan (AI).
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="5" title="Lihat detail dan preview Fruitopia">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/tugas-pa-dedi.git" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 6: E-Library -->
+            <div class="project-card" data-category="webapp" data-project-id="6">
+              <div class="project-img-box">
+                <img src="assets/project6.jpg?v=3" alt="E-Library" class="project-img" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-category-badge"><span class="cat-dot"></span> Perpustakaan Digital</span>
+                </div>
+                <div class="project-quick-view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>Lihat Detail</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-tech-tags">
+                  <span class="p-tech-tag">Laravel 13</span>
+                  <span class="p-tech-tag">Livewire 4</span>
+                  <span class="p-tech-tag">Tailwind CSS</span>
+                  <span class="p-tech-tag">PHP</span>
+                  <span class="p-tech-tag">MySQL</span>
+                </div>
+                <h3 class="project-title">E-Library</h3>
+                <p class="project-desc">
+                  Website E-Library adalah aplikasi manajemen perpustakaan sekolah berbasis web modern (Single-Page Application feel) yang mendigitalisasi pencarian buku, peminjaman mandiri, pemantauan tenggat waktu, hingga pengelolaan transaksi admin secara real-time tanpa perlu memuat ulang (reload) halaman.
+                </p>
+                <div class="project-links">
+                  <button type="button" class="p-link-primary btn-open-project" data-project="6" title="Lihat detail dan preview E-Library">
+                    <span>Lihat Detail</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/ghozi30/E-Library.git" target="_blank" rel="noopener noreferrer" class="p-link-secondary" title="Source Code">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+          <!-- Carousel Dots Indicator -->
+          <div class="projects-carousel-pagination" id="projects-carousel-dots"></div>
+
+        </div>
+
+        <!-- ==============================================
+             TAB PANEL 2: CERTIFICATES SHOWCASE
+             ============================================== -->
+        <div class="portfolio-tab-panel" id="tab-certificates">
+
+          <!-- Carousel Controls Header -->
+          <div class="certs-carousel-bar">
+            <div class="certs-carousel-info">
+              <span class="certs-carousel-badge">
+                <span class="carousel-pulse-dot"></span>
+                <span id="certs-carousel-counter">Menampilkan 1 - 2 dari 4 Sertifikat</span>
+              </span>
+              <span class="certs-carousel-swipe-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8L22 12L18 16"></path>
+                  <path d="M6 8L2 12L6 16"></path>
+                  <path d="M2 12H22"></path>
+                </svg>
+                Geser untuk melihat lainnya
+              </span>
+            </div>
+
+            <div class="certs-carousel-nav">
+              <button type="button" class="carousel-nav-btn prev-btn" id="cert-prev-btn" aria-label="Sertifikat Sebelumnya" title="Sebelumnya">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button type="button" class="carousel-nav-btn next-btn" id="cert-next-btn" aria-label="Sertifikat Selanjutnya" title="Selanjutnya">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="certs-carousel-wrapper">
+            <div class="certs-grid" id="certs-grid">
+
+            <!-- Certificate 1: DQLab SQL Database Management -->
+            <div class="cert-card" 
+                 data-cert-id="https://academy.dqlab.id/Certificate_check/result/DQLABSQLDMMDCBFN" 
+                 data-cert-title="SQL Database Management"
+                 data-cert-issuer="DQLab • 2026"
+                 data-cert-img="assets/cert1.jpg?v=2"
+                 data-cert-date="23 Okt 2026"
+                 data-cert-skills="Pengelolaan Master Data (Master Data Management), Pembersihan &amp; Rekonsiliasi Data Kompleks (Data Cleansing &amp; Reconciliation), Data Compliance &amp; Governance, SQL Database Management">
+              <div class="cert-img-box">
+                <img src="assets/cert1.jpg?v=2" alt="SQL Database Management" class="cert-img" loading="lazy" />
+                <div class="cert-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Verified Credential</span>
+                </div>
+              </div>
+              <div class="cert-body">
+                <div>
+                  <span class="cert-issuer">DQLab • 2026</span>
+                  <h4 class="cert-title">SQL Database Management</h4>
+                  <p class="cert-desc">
+                    Tantangan nyata pengelolaan master data, proses pembersihan dan rekonsiliasi data kompleks, serta kepatuhan data compliance industri.
+                  </p>
+                </div>
+                <div class="cert-footer">
+                  <span class="cert-id">ID: #DQLABSQLDMMDCBFN</span>
+                  <button type="button" class="cert-link btn-open-cert">
+                    <span>Lihat Bukti</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 2: DQLab Introduction to Data Science with Python -->
+            <div class="cert-card" 
+                 data-cert-id="https://academy.dqlab.id/Certificate_check/result/DQLABINTP1UFLNWG" 
+                 data-cert-title="Introduction to Data Science with Python"
+                 data-cert-issuer="DQLab • 2026"
+                 data-cert-img="assets/cert2.jpg?v=2"
+                 data-cert-date="21 Okt 2026"
+                 data-cert-skills="Dasar-dasar Python, Lanjutan dasar-dasar Python">
+              <div class="cert-img-box">
+                <img src="assets/cert2.jpg?v=2" alt="Introduction to Data Science with Python" class="cert-img" loading="lazy" />
+                <div class="cert-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Verified Credential</span>
+                </div>
+              </div>
+              <div class="cert-body">
+                <div>
+                  <span class="cert-issuer">DQLab • 2026</span>
+                  <h4 class="cert-title">Introduction to Data Science with Python</h4>
+                  <p class="cert-desc">
+                    Penguasaan dasar-dasar sintaksis Python hingga implementasi lanjutan untuk fondasi analisis data science modern.
+                  </p>
+                </div>
+                <div class="cert-footer">
+                  <span class="cert-id">ID: #DQLABINTP1UFLNWG</span>
+                  <button type="button" class="cert-link btn-open-cert">
+                    <span>Lihat Bukti</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 3: CISCO JavaScript Essentials 1 -->
+            <div class="cert-card" 
+                 data-cert-id="https://www.credly.com/badges/43eace99-6135-4893-ac02-3b7ce17290ee/public_url" 
+                 data-cert-title="JavaScript Essentials 1"
+                 data-cert-issuer="CISCO • 2026"
+                 data-cert-img="assets/cert3.jpg?v=2"
+                 data-cert-date="05 Nov 2026"
+                 data-cert-skills="1. Dasar Pemrograman &amp; Sintaks: Menguasai sintaks inti JavaScript, tipe data dasar, variabel, operator, percabangan/perulangan (flow control), dan fungsi.
+2. Pemikiran Algoritmik: Mampu menganalisis dan memecahkan masalah menggunakan konsep dan logika pemrograman.
+3. Pengembangan Aplikasi: Mampu merancang, membangun, dan menyempurnakan program JavaScript tingkat dasar.">
+              <div class="cert-img-box">
+                <img src="assets/cert3.jpg?v=2" alt="JavaScript Essentials 1" class="cert-img" loading="lazy" />
+                <div class="cert-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Verified Credential</span>
+                </div>
+              </div>
+              <div class="cert-body">
+                <div>
+                  <span class="cert-issuer">CISCO • 2026</span>
+                  <h4 class="cert-title">JavaScript Essentials 1</h4>
+                  <p class="cert-desc">
+                    Sertifikasi resmi Cisco Networking Academy &amp; OpenEDG JavaScript Institute untuk penguasaan sintaks inti JavaScript, logika algoritmik, dan perancangan aplikasi.
+                  </p>
+                </div>
+                <div class="cert-footer">
+                  <span class="cert-id">ID: Credly Verified</span>
+                  <button type="button" class="cert-link btn-open-cert">
+                    <span>Lihat Bukti</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 4: DQLab REGEX pada SQL -->
+            <div class="cert-card" 
+                 data-cert-id="https://academy.dqlab.id/Certificate_check/result/DQLABMDTLRMGNVDG" 
+                 data-cert-title="Mengolah Data Teks Unstructured dengan REGEX pada SQL"
+                 data-cert-issuer="DQLab • 2026"
+                 data-cert-img="assets/cert4.jpg?v=2"
+                 data-cert-date="26 Okt 2026"
+                 data-cert-skills="1. Memahami fungsi dan kegunaan REGEX dalam pengolahan data.
+2. Menguasai operator REGEXP beserta character class untuk mencocokkan pola data teks.
+3. Menggunakan fungsi REGEXP_LIKE untuk validasi pola dan REGEXP_REPLACE untuk pembersihan atau penggantian teks.
+4. Mengimplementasikan teknik REGEX pada tabel data (dqlabregex) dalam berbagai skenario studi kasus.">
+              <div class="cert-img-box">
+                <img src="assets/cert4.jpg?v=2" alt="Mengolah Data Teks Unstructured dengan REGEX pada SQL" class="cert-img" loading="lazy" />
+                <div class="cert-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Verified Credential</span>
+                </div>
+              </div>
+              <div class="cert-body">
+                <div>
+                  <span class="cert-issuer">DQLab • 2026</span>
+                  <h4 class="cert-title">Mengolah Data Teks Unstructured dengan REGEX pada SQL</h4>
+                  <p class="cert-desc">
+                    Penguasaan pola REGEX di SQL, validasi REGEXP_LIKE, pembersihan data REGEXP_REPLACE, dan pemrosesan data teks tidak terstruktur.
+                  </p>
+                </div>
+                <div class="cert-footer">
+                  <span class="cert-id">ID: #DQLABMDTLRMGNVDG</span>
+                  <button type="button" class="cert-link btn-open-cert">
+                    <span>Lihat Bukti</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+          <!-- Carousel Dots Indicator -->
+          <div class="certs-carousel-pagination" id="certs-carousel-dots"></div>
+
+        </div>
+
+        <!-- ==============================================
+             TAB PANEL 3: TECH STACK GRID
+             ============================================== -->
+        <div class="portfolio-tab-panel" id="tab-techstack">
+          
+          <div class="techstack-categorized">
+            
+            <!-- Category: Frontend & Web Core -->
+            <div class="tech-category-group">
+              <div class="tech-category-header">
+                <div class="tech-cat-icon">🎨</div>
+                <h4>Frontend &amp; Web Core</h4>
+              </div>
+              <div class="techstack-grid">
+                
+                <!-- HTML -->
+                <div class="tech-item" style="--tech-color: #e34f26;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#e34f26">
+                      <path d="M4 2l1.6 18 6.4 2 6.4-2L20 2H4zm13.4 5.3l-.2 2.7H8.6l.2 2.7h7.2l-.6 6.3-3.4 1-3.4-1-.2-2.8H6.2l.4 4.8 5.4 1.5 5.4-1.5 1-10.7H6.6l-.2-2.7h11.2l-.2-1.8z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">HTML</span>
+                </div>
+
+                <!-- CSS -->
+                <div class="tech-item" style="--tech-color: #1572b6;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#1572b6">
+                      <path d="M3 2l1.8 17.5 7.2 2.5 7.2-2.5L21 2H3zm14.8 5.4l-.2 2.1H9l.2 2.1h8.2l-.6 6.1-4.8 1.4-4.8-1.4-.3-3.5H10l.2 1.6 1.8.5 1.8-.5.2-2.1H6.8l-.5-5.8h11.5z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">CSS</span>
+                </div>
+
+                <!-- Tailwind CSS -->
+                <div class="tech-item" style="--tech-color: #38bdf8;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#38bdf8">
+                      <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.335 6.182 14.974 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.335 13.382 8.974 12 6.001 12z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">Tailwind CSS</span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="tech-item" style="--tech-color: #f7df1e;">
+                  <div class="tech-icon-circle">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#f7df1e">
+                      <path d="M3 3h18v18H3V3zm13.5 13.5c-.8 1.4-2.2 2-3.8 2-2.3 0-3.7-1.5-3.7-3.6 0-2.4 1.7-3.7 3.8-3.7 1.5 0 2.6.7 3.2 1.8l-1.8 1.1c-.4-.7-1-1.1-1.6-1.1-.9 0-1.6.6-1.6 1.7 0 1.2.6 1.7 1.5 1.7.8 0 1.3-.4 1.7-1l1.8 1.1zm-6-6.4v7.7H8.3v-4.6c0-1.2-.5-1.7-1.4-1.7-.8 0-1.4.5-1.8 1.1v5.2H3V10.1h2.1v1.1c.6-.8 1.5-1.3 2.5-1.3 1.8 0 2.9 1.1 2.9 3.2z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">JavaScript</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Category: Backend, Framework, Tools & Database -->
+            <div class="tech-category-group">
+              <div class="tech-category-header">
+                <div class="tech-cat-icon">⚡</div>
+                <h4>Backend, Framework, Tools &amp; Database</h4>
+              </div>
+              <div class="techstack-grid">
+
+                <!-- PHP -->
+                <div class="tech-item" style="--tech-color: #777bb4;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#777bb4">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-4.7 13.5H5.8L7 8.5h2.5c1.4 0 2.3.8 2.1 2.2-.2 1.6-1.5 2.8-2.9 2.8H7.5l-.2 2zm5.4 0h-1.5l1.2-7h2.5c1.4 0 2.3.8 2.1 2.2-.2 1.6-1.5 2.8-2.9 2.8H13l-.3 2zm-3.6-4.5h.9c.7 0 1.3-.6 1.4-1.3.1-.7-.3-1.2-1-1.2H8.7l-.6 2.5zm5.5 0h.9c.7 0 1.3-.6 1.4-1.3.1-.7-.3-1.2-1-1.2h-.9l-.6 2.5z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">PHP</span>
+                </div>
+
+                <!-- Laravel -->
+                <div class="tech-item" style="--tech-color: #ff2d20;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff2d20">
+                      <path d="M8.6 3.8L3 7v10l5.6 3.2 5.6-3.2V7L8.6 3.8zm0 2.3l3.6 2.1-3.6 2.1L5 8.2l3.6-2.1zm-4.1 3.2l3.6 2.1v4.2L4.5 13.5V9.3zm8.2 4.2v-4.2l3.6-2.1v4.2l-3.6 2.1zM15.4 3.8L21 7v10l-5.6 3.2v-2.3l3.6-2.1V9.3L15.4 7.2V3.8z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">Laravel</span>
+                </div>
+
+                <!-- Livewire -->
+                <div class="tech-item" style="--tech-color: #fb70a9;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fb70a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 12h4l3-8 4 16 3-8h4"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">Livewire</span>
+                </div>
+
+                <!-- GitHub -->
+                <div class="tech-item" style="--tech-color: #ffffff;">
+                  <div class="tech-icon-circle">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#ffffff">
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">GitHub</span>
+                </div>
+
+                <!-- MySQL -->
+                <div class="tech-item" style="--tech-color: #00758f;">
+                  <div class="tech-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#00758f">
+                      <path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 3s-3.13 3-7 3-7-1.34-7-3 3.13-3 7-3zm7 12c0 1.66-3.13 3-7 3s-7-1.34-7-3v-2.55c1.78 1.25 4.29 1.95 7 1.95s5.22-.7 7-1.95V17zm0-4.55c-1.78 1.25-4.29 1.95-7 1.95s-5.22-.7-7-1.95V9.45c1.78 1.25 4.29 1.95 7 1.95s5.22-.7 7-1.95v3z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">MySQL</span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==============================================
+           PAGE 4: CONTACT & INTERACTIVE VISITOR COMMENT SYSTEM
+           ============================================== -->
+      <section class="contact-section" id="Contact">
+
+        <!-- Section Header -->
+        <div class="section-header contact-header">
+          <div class="section-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>GET IN TOUCH</span>
+          </div>
+          <h2 class="section-title">Mari Terhubung &amp; Kolaborasi</h2>
+          <p class="section-subtitle-clean">
+            Kirim pesan langsung untuk tawaran proyek dan kerjasama, atau tinggalkan ulasan di buku tamu interaktif.
+          </p>
+        </div>
+
+        <!-- Contact Section Capsule Tabs -->
+        <div class="contact-tabs-container">
+          <div class="contact-tabs-pills" role="tablist">
+            <button class="contact-tab-btn active" data-tab="direct-message" role="tab" aria-selected="true" aria-label="Kirim Pesan Langsung">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Kirim Pesan Langsung</span>
+            </button>
+
+            <button class="contact-tab-btn" data-tab="guestbook" role="tab" aria-selected="false" aria-label="Buku Tamu Komunitas">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Buku Tamu &amp; Ulasan</span>
+              <span class="tab-badge" id="contact-tab-count-badge">3</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 1: DIRECT CONTACT MESSAGE -->
+        <div class="contact-tab-panel active" id="tab-direct-message" role="tabpanel">
+          <div class="contact-grid">
+            <!-- Left Column: Contact Cards & Availability -->
+            <div class="contact-info-col">
+              <!-- Availability Status Card -->
+              <div class="contact-status-card">
+                <div class="status-indicator-ring">
+                  <span class="status-inner-dot"></span>
+                </div>
+                <div class="status-details">
+                  <span class="status-title">Status: Terbuka untuk Kolaborasi</span>
+                  <span class="status-sub">Mahasiswa TRPL Politeknik IDN • Siap Magang &amp; Freelance</span>
+                </div>
+              </div>
+
+              <!-- Contact Method Cards -->
+              <div class="contact-methods-list">
+                <!-- Email Card -->
+                <a href="mailto:septianghozi24@gmail.com" class="contact-card">
+                  <div class="contact-card-icon icon-email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="contact-card-content">
+                    <span class="contact-card-label">Email Resmi</span>
+                    <span class="contact-card-value">septianghozi24@gmail.com</span>
+                  </div>
+                  <div class="contact-card-action">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                </a>
+
+                <!-- WhatsApp Card -->
+                <a href="https://wa.me/6285778966387?text=Halo%20Septian%20Ghozi,%20saya%20tertarik%20bekerjasama%20dengan%20Anda" target="_blank" rel="noopener noreferrer" class="contact-card">
+                  <div class="contact-card-icon icon-wa">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                  </div>
+                  <div class="contact-card-content">
+                    <span class="contact-card-label">WhatsApp Direct</span>
+                    <span class="contact-card-value">+62 857-7896-6387</span>
+                  </div>
+                  <div class="contact-card-action">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                </a>
+
+                <!-- Campus Location Card -->
+                <div class="contact-card static-card">
+                  <div class="contact-card-icon icon-location">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="contact-card-content">
+                    <span class="contact-card-label">Lokasi Kampus</span>
+                    <span class="contact-card-value">Politeknik IDN, Jonggol, Bogor, Jawa Barat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Contact Form -->
+            <div class="contact-form-col">
+              <div class="contact-form-container">
+                <div class="form-header">
+                  <h3>Kirim Pesan Langsung</h3>
+                  <p>Silakan tinggalkan pesan untuk tawaran proyek, diskusi teknologi, atau kerjasama.</p>
+                </div>
+
+                <form id="direct-contact-form" class="cyber-form">
+                  <div class="form-group-row">
+                    <div class="form-group">
+                      <label for="contact-name">Nama Lengkap</label>
+                      <div class="input-with-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input type="text" id="contact-name" name="name" required placeholder="Contoh: Budi Pratama" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="contact-email">Alamat Email</label>
+                      <div class="input-with-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <input type="email" id="contact-email" name="email" required placeholder="budi@example.com" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-subject">Subjek Pesan</label>
+                    <div class="input-with-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="21" y1="10" x2="3" y2="10"></line>
+                        <line x1="21" y1="6" x2="3" y2="6"></line>
+                        <line x1="21" y1="14" x2="3" y2="14"></line>
+                        <line x1="21" y1="18" x2="3" y2="18"></line>
+                      </svg>
+                      <input type="text" id="contact-subject" name="subject" required placeholder="Tawaran Kerjasama / Konsultasi Web" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-message">Pesan Anda</label>
+                    <textarea id="contact-message" name="message" rows="3" required placeholder="Tuliskan detail pesan Anda di sini..."></textarea>
+                  </div>
+
+                  <button type="submit" class="btn-submit-contact" id="btn-submit-contact">
+                    <span class="btn-text">Kirim Pesan Sekarang</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 2: INTERACTIVE VISITOR GUESTBOOK -->
+        <div class="contact-tab-panel" id="tab-guestbook" role="tabpanel">
+          <div class="guestbook-layout">
+            <!-- Left: Add Comment Box -->
+            <div class="guestbook-form-box">
+              <h4 class="form-subheading">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                <span>Tulis Komentar Baru</span>
+              </h4>
+              
+              <form id="guestbook-form" class="guestbook-form">
+                <div class="form-group-row">
+                  <div class="form-group">
+                    <label for="visitor-name">Nama / Alias</label>
+                    <input type="text" id="visitor-name" required placeholder="Nama Anda" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="visitor-role">Profesi / Peran</label>
+                    <select id="visitor-role">
+                      <option value="Developer">💻 Fellow Developer</option>
+                      <option value="Recruiter">💼 HR / Tech Recruiter</option>
+                      <option value="Student">🎓 Mahasiswa / Pelajar</option>
+                      <option value="Lecturer">👨‍🏫 Dosen / Pengajar</option>
+                      <option value="Tech Enthusiast">🚀 Tech Enthusiast</option>
+                      <option value="Visitor">✨ Pengunjung Umum</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Rating Kepuasan</label>
+                  <div class="star-rating-picker" id="star-picker">
+                    <button type="button" class="star-btn active" data-rating="1">★</button>
+                    <button type="button" class="star-btn active" data-rating="2">★</button>
+                    <button type="button" class="star-btn active" data-rating="3">★</button>
+                    <button type="button" class="star-btn active" data-rating="4">★</button>
+                    <button type="button" class="star-btn active" data-rating="5">★</button>
+                    <span class="rating-value-label" id="rating-label">5.0 / 5.0 (Luar Biasa!)</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="visitor-message">Komentar / Kesan</label>
+                  <textarea id="visitor-message" rows="2" required placeholder="Contoh: Tampilan visual websitenya sangat keren dan responsif! Sukses terus!"></textarea>
+                </div>
+
+                <button type="submit" class="btn-post-comment">
+                  <span>Posting Komentar</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Right: Comments Feed -->
+            <div class="guestbook-feed-box">
+              <div class="feed-header">
+                <span class="feed-count-badge" id="comment-count-badge">3 Komentar</span>
+                <span class="feed-live-indicator"><span class="pulse-dot"></span> Live Feed</span>
+              </div>
+
+              <div class="comments-list" id="comments-list">
+                <!-- Dynamically populated via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==============================================
+           MODAL: PROJECT PREVIEW & SPECIFICATIONS
+           ============================================== -->
+      <div class="cyber-modal-overlay" id="project-modal" aria-hidden="true">
+        <div class="cyber-modal project-modal-box">
+          <button type="button" class="modal-close-btn" id="btn-close-project-modal" aria-label="Tutup Modal">&times;</button>
+          
+          <div class="project-modal-header">
+            <span class="modal-category-badge" id="p-modal-cat">Kategori Proyek</span>
+            <h3 class="modal-title" id="p-modal-title">Judul Proyek</h3>
+          </div>
+
+          <div class="project-modal-preview" id="p-modal-preview-box" title="Klik untuk memperbesar screenshot gambar">
+            <img id="p-modal-img" src="assets/project1.jpg" alt="Preview Proyek" class="modal-banner-img" />
+            <div class="modal-img-zoom-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Klik untuk Perbesar Gambar</span>
+            </div>
+          </div>
+
+          <div class="project-modal-body">
+            <p class="modal-desc" id="p-modal-desc">Deskripsi lengkap proyek.</p>
+            
+            <div class="modal-meta-section">
+              <h4>Teknologi Utama yang Digunakan</h4>
+              <div class="modal-tech-pills" id="p-modal-tech">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <div class="modal-meta-section">
+              <h4>Fitur & Kemampuan Unggulan</h4>
+              <ul class="modal-features-list" id="p-modal-features">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+
+            <div class="modal-action-row">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" id="p-modal-demo-btn">
+                <span>Kunjungi Live Demo</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+
+              <a href="https://github.com/ghozi30" target="_blank" rel="noopener noreferrer" class="btn-secondary" id="p-modal-code-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span>Lihat Repository GitHub</span>
+              </a>
+
+              <button type="button" class="btn-modal-cancel" id="btn-cancel-project-modal" aria-label="Tutup / Batal Detail Proyek">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                <span>Tutup / Batal</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==============================================
+           MODAL: CERTIFICATE LIGHTBOX & VERIFICATION
+           ============================================== -->
+      <div class="cyber-modal-overlay" id="cert-modal" aria-hidden="true">
+        <div class="cyber-modal cert-modal-box">
+          <button type="button" class="modal-close-btn" id="btn-close-cert-modal" aria-label="Tutup Modal">&times;</button>
+          
+          <div class="cert-modal-body">
+            <div class="cert-modal-img-col" id="c-modal-img-box" title="Klik untuk memperbesar sertifikat">
+              <img id="c-modal-img" src="assets/cert1.jpg" alt="Sertifikat Resmi" class="cert-full-img" />
+              <div class="modal-img-zoom-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Klik untuk Perbesar Sertifikat</span>
+              </div>
+            </div>
+
+            <div class="cert-modal-info-col">
+              <div class="cert-modal-meta-top">
+                <span class="cert-modal-issuer" id="c-modal-issuer">DQLab • 2026</span>
+                <span class="cert-verified-badge-inline">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span>Verified Credential</span>
+                </span>
+              </div>
+              <h3 class="cert-modal-title" id="c-modal-title">SQL Database Management</h3>
+              
+              <div class="cert-info-item">
+                <span class="info-label">Tanggal Penerbitan:</span>
+                <span class="info-val" id="c-modal-date">23 Okt 2026</span>
+              </div>
+
+              <div class="cert-info-item">
+                <span class="info-label">Link Sertifikat:</span>
+                <div class="cert-id-copy-group">
+                  <code id="c-modal-id">https://academy.dqlab.id/Certificate_check/result/DQLABSQLDMMDCBFN</code>
+                  <button type="button" class="btn-copy-id" id="btn-copy-cert-id" title="Salin Link Sertifikat">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span>Salin Link</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="cert-info-item">
+                <span class="info-label">Keahlian Tervalidasi:</span>
+                <p class="skills-validated-text" id="c-modal-skills">Pengelolaan Master Data, Pembersihan & Rekonsiliasi Data, SQL</p>
+              </div>
+
+              <div class="cert-modal-action-row">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary cert-modal-verify-btn" id="c-modal-verify-btn">
+                  <span>Buka Link Verifikasi Resmi</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+
+                <button type="button" class="btn-modal-cancel" id="btn-cancel-cert-modal" aria-label="Tutup / Batal Detail Sertifikat">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  <span>Tutup / Batal</span>
+                </button>
+              </div>
+
+              <div class="cert-modal-footer">
+                <div class="security-note">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Kredensial tersertifikasi & terdaftar secara legal pada institusi penerbit.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==============================================
+           MODAL: IMAGE LIGHTBOX / ZOOM WITH CANCEL BUTTON
+           ============================================== -->
+      <div class="cyber-modal-overlay image-lightbox-overlay" id="image-lightbox-modal" aria-hidden="true">
+        <div class="image-lightbox-box">
+          <div class="lightbox-top-bar">
+            <div class="lightbox-title-wrap">
+              <span class="lightbox-category-tag" id="lightbox-tag">Pratinjau Penuh</span>
+              <h4 class="lightbox-heading" id="lightbox-heading">Preview Gambar</h4>
+            </div>
+            <button type="button" class="btn-lightbox-cancel" id="btn-close-lightbox-top" aria-label="Tutup / Batal Preview">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              <span>Tutup / Batal</span>
+            </button>
+          </div>
+
+          <div class="lightbox-image-stage" id="lightbox-stage">
+            <img id="lightbox-full-img" src="" alt="Pratinjau Gambar Penuh" class="lightbox-img-element" />
+          </div>
+
+          <div class="lightbox-bottom-bar">
+            <p class="lightbox-note">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Klik tombol Tutup / Batal atau klik area luar gambar untuk menutup</span>
+            </p>
+            <button type="button" class="btn-lightbox-cancel btn-lightbox-cancel-lg" id="btn-cancel-lightbox-bottom" aria-label="Tutup / Batal Preview">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              <span>Tutup / Batal</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==============================================
+           TOAST NOTIFICATION CONTAINER
+           ============================================== -->
+      <div class="cyber-toast-container" id="toast-container"></div>
+
+      <!-- ==============================================
+           FOOTER
+           ============================================== -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand-col">
+            <div class="nav-brand">
+              <div class="brand-logo-glow">S</div>
+              <span class="brand-name">Septian Ghozi Mustofa</span>
+            </div>
+            <p class="footer-tagline">
+              Mahasiswa Teknologi Rekayasa Perangkat Lunak di Politeknik IDN. Menciptakan solusi rekayasa web modern, performa tinggi, dan antarmuka interaktif.
+            </p>
+          </div>
+
+          <div class="footer-links-col">
+            <h4>Quick Navigation</h4>
+            <ul>
+              <li><a href="#Home">Home</a></li>
+              <li><a href="#About">About Me</a></li>
+              <li><a href="#Portofolio">Portfolio Showcase</a></li>
+              <li><a href="#Contact">Contact & Guestbook</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social-col">
+            <h4>Social Connect</h4>
+            <div class="hero-socials footer-socials">
+              <a href="https://github.com/ghozi30" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/septian-ghozi/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/ghoziseptian/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
+            <button type="button" class="btn-back-to-top" id="btn-back-to-top" title="Kembali ke Atas">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+              <span>Back to Top</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <p>© 2026-2030 Septian Ghozi Mustofa. Politeknik IDN TRPL. All Rights Reserved.</p>
+          <div class="footer-badge">
+            <span class="pulse-dot"></span>
+            <span>Crafted with HTML5 • Vanilla CSS • JavaScript</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/background.js?v=10"></script>
+  <script src="js/welcome.js?v=10"></script>
+  <script src="js/hero3d.js?v=10"></script>
+  <script src="js/main.js?v=24"></script>
+
+</body>
+</html>
